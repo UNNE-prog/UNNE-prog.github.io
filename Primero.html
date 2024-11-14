@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArbonTracker - Monitoreo de Huella de Carbono</title>
+
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+            background-color: #40916c;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #52b788;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ArbonTracker</h1>
+            <p>Medir y reducir la huella de carbono de forma inteligente.</p>
+        </header>
+
+        <section>
+            <h2>Calcula tu Huella de Carbono</h2>
+            <p>Ingresa tu consumo energético mensual (en kWh):</p>
+            <input type="number" id="energyInput" placeholder="Ej: 150" min="0" style="padding: 8px; width: 100%;">
+            <button class="btn" onclick="calculateCarbonFootprint()">Calcular Huella</button>
+            <div id="result"></div>
+        </section>
+
+        <section>
+            <h2>Recomendaciones Personalizadas</h2>
+            <p>Con base en tus datos, ArbonTracker te proporciona recomendaciones para reducir tu impacto.</p>
+            <button class="btn" onclick="showRecommendations()">Ver Recomendaciones</button>
+            <ul id="recommendations" style="display: none; text-align: left; margin-top: 10px;">
+                <li>Optimiza el uso de la energía apagando dispositivos innecesarios.</li>
+                <li>Considera fuentes de energía renovable como paneles solares.</li>
+                <li>Reduce el consumo de electricidad durante las horas pico.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>© 2024 ArbonTracker. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        function calculateCarbonFootprint() {
+            const energy = document.getElementById('energyInput').value;
+            const carbonFootprint = (energy * 0.233).toFixed(2); // Ejemplo de cálculo simplificado
+            document.getElementById('result').textContent = `Tu huella de carbono es de aproximadamente ${carbonFootprint} kg de CO₂ al mes.`;
+        }
+
+        function showRecommendations() {
+            const recommendations = document.getElementById('recommendations');
+            recommendations.style.display = recommendations.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
